@@ -24,15 +24,6 @@
  */
 package com.machinepublishers.glass.ui.monocle;
 
-import java.io.File;
-import java.lang.reflect.Constructor;
-import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
-import java.security.AccessController;
-import java.security.PrivilegedAction;
-import java.util.Arrays;
-import java.util.concurrent.atomic.AtomicBoolean;
-
 import com.sun.glass.ui.Application;
 import com.sun.glass.ui.CommonDialogs.ExtensionFilter;
 import com.sun.glass.ui.CommonDialogs.FileChooserResult;
@@ -45,7 +36,14 @@ import com.sun.glass.ui.Timer;
 import com.sun.glass.ui.View;
 import com.sun.glass.ui.Window;
 
-import javafx.scene.control.TextInputDialog;
+import java.io.File;
+import java.lang.reflect.Constructor;
+import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
+import java.util.Arrays;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class MonocleApplication extends Application {
 
@@ -298,7 +296,7 @@ public final class MonocleApplication extends Application {
           MouseInput.getInstance().setState(mouseState, false);
         }
       }
-    } catch (Throwable t) {
+    } catch (Exception t) {
       t.printStackTrace();
     }
     return new Screen[] { screen };

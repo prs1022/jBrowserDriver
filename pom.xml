@@ -153,6 +153,11 @@
       <artifactId>fast-classpath-scanner</artifactId>
       <version>1.93.0</version>
     </dependency>
+    <dependency>
+      <groupId>com.amazonaws</groupId>
+      <artifactId>aws-java-sdk</artifactId>
+      <version>1.11.44</version>
+    </dependency>
   </dependencies>
   <distributionManagement>
     <snapshotRepository>
@@ -233,6 +238,14 @@
             </configuration>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+        <groupId>com.zenjava</groupId>
+        <artifactId>javafx-maven-plugin</artifactId>
+        <version>8.7.0</version>
+        <configuration>
+          <mainClass>your.package.with.Launcher</mainClass>
+        </configuration>
       </plugin>
     </plugins>
   </build>
