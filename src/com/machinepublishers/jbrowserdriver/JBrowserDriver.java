@@ -17,21 +17,24 @@
  */
 package com.machinepublishers.jbrowserdriver;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.Serializable;
+import com.machinepublishers.jbrowserdriver.diagnostics.Test;
+import io.github.lukehutch.fastclasspathscanner.FastClasspathScanner;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang.StringUtils;
+import org.openqa.selenium.*;
+import org.openqa.selenium.internal.Killable;
+import org.openqa.selenium.logging.LogEntries;
+import org.openqa.selenium.remote.*;
+import org.zeroturnaround.exec.ProcessExecutor;
+import org.zeroturnaround.exec.listener.ProcessListener;
+import org.zeroturnaround.exec.stream.LogOutputStream;
+import org.zeroturnaround.process.PidProcess;
+import org.zeroturnaround.process.Processes;
+
+import java.io.*;
 import java.nio.file.Files;
 import java.rmi.registry.LocateRegistry;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Enumeration;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
@@ -44,32 +47,6 @@ import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
-
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang.StringUtils;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Capabilities;
-import org.openqa.selenium.Cookie;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.WebDriverException;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.internal.Killable;
-import org.openqa.selenium.logging.LogEntries;
-import org.openqa.selenium.remote.CommandExecutor;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.ErrorHandler;
-import org.openqa.selenium.remote.FileDetector;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.remote.SessionId;
-import org.zeroturnaround.exec.ProcessExecutor;
-import org.zeroturnaround.exec.listener.ProcessListener;
-import org.zeroturnaround.exec.stream.LogOutputStream;
-import org.zeroturnaround.process.PidProcess;
-import org.zeroturnaround.process.Processes;
-
-import com.machinepublishers.jbrowserdriver.diagnostics.Test;
-
-import io.github.lukehutch.fastclasspathscanner.FastClasspathScanner;
 
 /**
  * A Selenium-compatible and WebKit-based web driver written in pure Java.
